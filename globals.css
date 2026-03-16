@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+/* Light SaaS background — subtle fixed gradient so the whole page feels polished */
+body {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 40%, #f1f5f9 100%);
+  background-attachment: fixed;
+  @apply text-slate-900 antialiased;
+}
+
+/* Soft gradient accent background */
+.gradient-bg {
+  background: radial-gradient(circle at top left, #6366f1 0, transparent 55%),
+    radial-gradient(circle at bottom right, #38bdf8 0, transparent 55%),
+    radial-gradient(circle at top right, #22c55e 0, transparent 55%);
+}
+
+/* Main card panels */
+.card {
+  @apply bg-white/80 border border-slate-200 rounded-2xl shadow-lg backdrop-blur-sm;
+}
+
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card p,
+.card span,
+.card label {
+  @apply text-slate-800;
+}
+
+/* Badge styling */
+.badge {
+  @apply inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs
+  font-medium text-indigo-600 ring-1 ring-inset ring-indigo-200;
+}
+
+/* Dashboard content area — layered radial accents over the base linear sweep */
+.dashboard-bg {
+  background:
+    radial-gradient(ellipse at 0%   0%,   rgba(99,  102, 241, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 100% 0%,   rgba(139,  92, 246, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 50%  100%, rgba(59,  130, 246, 0.04) 0%, transparent 45%),
+    linear-gradient(135deg, #f8fafc 0%, #eef2ff 45%, #f1f5f9 100%);
+  background-attachment: fixed;
+}
+
+/* ─── Enhanced Dashboard Cards ─────────────────────────────── */
+
+.dashboard-card {
+  @apply bg-white border border-slate-200/80 rounded-2xl shadow-sm
+         transition-shadow duration-200 hover:shadow-md;
+}
+
+.dashboard-card-header {
+  @apply flex items-center justify-between px-6 py-4
+         border-b border-slate-100;
+}
+
+.dashboard-card-title {
+  @apply text-sm font-semibold text-slate-700 tracking-tight;
+}
+
+.dashboard-card-body {
+  @apply px-6 py-5;
+}
+
+/* ─── ATS Score Display ─────────────────────────────────────── */
+
+.ats-score-ring {
+  @apply relative flex items-center justify-center;
+}
+
+.ats-score-value {
+  @apply text-4xl font-black tracking-tight tabular-nums;
+}
+
+.ats-score-label {
+  @apply text-xs font-semibold uppercase tracking-widest text-slate-400 mt-0.5;
+}
+
+/* Color-coded score classes */
+.ats-score--red    { @apply text-red-500; }
+.ats-score--yellow { @apply text-amber-500; }
+.ats-score--green  { @apply text-emerald-500; }
+
+.ats-badge--red {
+  @apply inline-flex items-center gap-1.5 rounded-full bg-red-50
+         px-3 py-1 text-xs font-semibold text-red-600
+         ring-1 ring-red-200;
+}
+.ats-badge--yellow {
+  @apply inline-flex items-center gap-1.5 rounded-full bg-amber-50
+         px-3 py-1 text-xs font-semibold text-amber-600
+         ring-1 ring-amber-200;
+}
+.ats-badge--green {
+  @apply inline-flex items-center gap-1.5 rounded-full bg-emerald-50
+         px-3 py-1 text-xs font-semibold text-emerald-600
+         ring-1 ring-emerald-200;
+}
+
+/* ─── ATS Progress Bar ──────────────────────────────────────── */
+
+.ats-progress-track {
+  @apply relative h-3 w-full overflow-hidden rounded-full bg-slate-100;
+}
+
+.ats-progress-fill {
+  @apply h-full rounded-full transition-all duration-700 ease-out;
+}
+
+.ats-progress-fill--red    { @apply bg-gradient-to-r from-red-400    to-red-500; }
+.ats-progress-fill--yellow { @apply bg-gradient-to-r from-amber-400  to-amber-500; }
+.ats-progress-fill--green  { @apply bg-gradient-to-r from-emerald-400 to-emerald-500; }
+
+/* Animated shimmer on progress bar */
+.ats-progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.35) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* ─── Score Tier Labels ─────────────────────────────────────── */
+
+.score-tier {
+  @apply flex items-center gap-2 text-xs font-medium;
+}
+
+.score-tier--red    { @apply text-red-500; }
+.score-tier--yellow { @apply text-amber-500; }
+.score-tier--green  { @apply text-emerald-500; }
+
+/* ─── Skill Tags ────────────────────────────────────────────── */
+
+.skill-tag {
+  @apply inline-flex items-center rounded-lg bg-indigo-50
+         px-2.5 py-1 text-xs font-medium text-indigo-700
+         ring-1 ring-inset ring-indigo-200/60;
+}
+
+.skill-tag--missing {
+  @apply inline-flex items-center rounded-lg bg-red-50
+         px-2.5 py-1 text-xs font-medium text-red-600
+         ring-1 ring-inset ring-red-200/60;
+}
+
+/* ─── Section Headings ──────────────────────────────────────── */
+
+.section-eyebrow {
+  @apply text-[10px] font-bold uppercase tracking-widest text-slate-400;
+}
+
+.section-title {
+  @apply text-lg font-bold text-slate-900 tracking-tight;
+}
+
+/* ─── Input & Textarea Enhancements ─────────────────────────── */
+
+.input-field {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3
+         text-sm text-slate-800 placeholder-slate-400 shadow-sm
+         transition focus:border-indigo-400 focus:outline-none
+         focus:ring-2 focus:ring-indigo-300/40;
+}
+
+.textarea-field {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3
+         text-sm text-slate-800 placeholder-slate-400 shadow-sm
+         transition focus:border-indigo-400 focus:outline-none
+         focus:ring-2 focus:ring-indigo-300/40 resize-none;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl
+         bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white
+         shadow-md shadow-indigo-200 transition-all
+         hover:bg-indigo-700 hover:shadow-indigo-300
+         active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl
+         border border-slate-200 bg-white px-5 py-2.5 text-sm
+         font-semibold text-slate-700 shadow-sm transition-all
+         hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900
+         active:scale-[0.97];
+}
+
+/* ─── Upload Zone ───────────────────────────────────────────── */
+
+.upload-zone {
+  @apply flex flex-col items-center justify-center gap-3 rounded-2xl
+         border-2 border-dashed border-slate-200 bg-slate-50/50 p-10
+         text-center transition-all cursor-pointer
+         hover:border-indigo-300 hover:bg-indigo-50/30;
+}
+
+.upload-zone--active {
+  @apply border-indigo-400 bg-indigo-50/50 shadow-inner;
+}
+
+/* ─── History Table ─────────────────────────────────────────── */
+
+.history-row {
+  @apply flex items-center justify-between gap-4 rounded-xl
+         border border-slate-100 bg-white px-5 py-4 shadow-sm
+         transition hover:border-indigo-100 hover:shadow-md;
+}
+
+/* ─── Animations ─────────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.35s ease-out both;
+}
+
+.animate-fade-up-delay-1 { animation-delay: 0.05s; }
+.animate-fade-up-delay-2 { animation-delay: 0.10s; }
+.animate-fade-up-delay-3 { animation-delay: 0.15s; }
+.animate-fade-up-delay-4 { animation-delay: 0.20s; }
